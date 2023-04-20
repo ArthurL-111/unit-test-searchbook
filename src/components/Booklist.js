@@ -1,43 +1,9 @@
 import React from "react";
-/* 
-  title
-  author
-  publisher
-  imageLinks
-  description
 
-*/
-
-//startIndex, maxResult, totalItems
-
-//currentPage, itemsPerPage, totalPage
-//itemsPerPage = maxResult
-//totalPage = Math.ceil(totalItems / maxResult) , 15, 10, 2
-//currentPage = startIndex / maxResult
-
-/* 
-     server-side pagination: less payload, less stress on server
-        infinite scroll
-     client-side pagination: , slice
-
-    auto complete
-
-     debouncing
-
-     throttling
-
-
-unit test: one functionality, one component, no network, mock up api, data
-  prevent breaking existing code
-  help other dev to read your code
-integration test: multiple component work together,
-
-e2e test: end to end test, browser, 
-
-*/
 const Booklist = ({ list = [], onClickBook , onClickPrev, onClickNext, currentPage, totalPages }) => {
     return (
         <div className="booklist">
+            <div className="pagination-container"><button onClick={onClickPrev}>prev</button>{currentPage}/{totalPages}<button onClick={onClickNext}>next</button></div>
             <ul>
                 {list.length === 0 ? <span>Nothing here</span> : list.map((item) => {
                     const {
@@ -62,7 +28,7 @@ const Booklist = ({ list = [], onClickBook , onClickPrev, onClickNext, currentPa
                     );
                 })}
             </ul>
-            <div className="pagination-container"><button onClick={onClickPrev}>prev</button>{currentPage}/{totalPages}<button onClick={onClickNext}>next</button></div>
+            
         </div>
     );
 };
